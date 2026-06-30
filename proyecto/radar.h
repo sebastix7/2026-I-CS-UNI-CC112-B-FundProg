@@ -38,7 +38,21 @@ struct vehiculo {
         //Nos acordamos que la formula para calcular la velocidad es variación de la posición sobre la variación del tiempo
         void calcularVelocidad(const T* deltaX, const T* deltaT, T* velocidadResultado);
         void capturarTraficoSimulado(vehiculo<T> listaAutos[], T1* cantidadDetectados);
-};
+        //Comparamos el auto que ya estamos trabajando con otro
+        bool esMasRapidoQue(const vehiculo<T>& otro) const{
+            return velocidadActual > otro.velocidadActual;
+        }
+        //Imprimimos los adatos del auto
+        void mostrarFilaReporte(T limiteVelocidad) const{
+            std::cout << std::left << std::setw(6) << id << std::setw(12) << placa << std::setw(10) << velocidadActual;
+            if(velocidadActual > limiteVelocidad){
+                std::cout << "MULTA POR EXCESO"<< std::endl;
+            }
+            else{
+                std::cout << "OK"<< std::endl;
+            }
+        }
+};      
 
 //Definimos las funciones
 //Calculamos la velocidad de cada vehículo

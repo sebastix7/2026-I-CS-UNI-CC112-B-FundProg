@@ -7,12 +7,15 @@ template <typename T>
 void ordenarVehiculosPorVelocidad(vehiculo<T>* arreglos, UT1 tamaño) {
     for (UT1 i = 0; i < tamaño - 1; ++i) {
         for (UT1 j = 0; j < tamaño - i - 1; ++j) {
-            vehiculo<T> temp1 = arreglos[j];
-            arreglos[j] = arreglos[j + 1];
-            arreglos[j + 1] = temp1;
+            //Comparamos los valores
+            if(arreglos[j].esMasRapidoQue(arreglos[j+1])){
+                vehiculo<T> temp1 = arreglos[j];
+                arreglos[j] = arreglos[j + 1];
+                arreglos[j + 1] = temp1;
             }
         }
     }
+}
 
 template <typename T>
 struct SistemaMonitoreo {
@@ -26,11 +29,13 @@ struct SistemaMonitoreo {
     }
     void procesarYReportar(vehiculo<T> listaAutos[], T1 cantidad) {
         std::cout << " Reporte de trafico y captura de infractores" << std::endl;
-        std::cout << std::left << std::setw(10) << "ESTADO" << "VELOCIDAD CALCULADA\n";
+        std::cout << std::left << std::setw(6) << "ID" << std::setw(12) << "PLACA" << std::setw(10) << "VELOCIDAD" << "ESTADO\n";
+        std::cout << std::endl;
 
         for (T1 i = 0; i < cantidad; ++i) {
-        std::cout << std::left << std::setw(10) << "Vehiculo" << "Procesado correctamente.\n";
+        listaAutos[i].mostrarFilaReporte(limite);
     }
+    std::cout << std::endl;
   }
 }; 
 
@@ -45,7 +50,7 @@ void generarArchivoTrafico() {
         archivo.close();
         std::cout<<"[Disco] Archivo 'trafico.txt' generado correctamente."<<std::endl;
     } else {
-        std::cerr << "[Error] No se pudo generar el archivo 'trafico.txt'." << std::endl;
+        std::cout<< "[Error] No se pudo generar el archivo 'trafico.txt'." << std::endl;
     }   
 }
 template <typename T>
