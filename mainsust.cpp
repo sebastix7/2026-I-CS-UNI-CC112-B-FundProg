@@ -1,5 +1,5 @@
 // programa que tenga herencia, polimorfismo, no tipos nativos, control compilacion duplicada.
-// que se note polimorfismo, que se noten los datos de tipos, que de un guardia se derive a otro y cosas asi
+// que se note polimorfismo, que se noten los datos de tipos, que de un guardia se derive a otro... creo que era algo asi
 
 #include <iostream>
 #include "uni.h"
